@@ -6,7 +6,8 @@ const PORT = 3000;
 app.get("/", (req, res) => {
   res.send("Hello, world!");
 });
-// app.use("/", require("./routes"));
+app.use(express.json());
+app.use("/", require("./routes"));
 
 connect().then(() => {
   app.listen(PORT, () => {

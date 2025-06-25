@@ -1,0 +1,12 @@
+POST http://localhost:3000/books
+Content-Type: application/json
+
+{
+  "title": "Book Test 1",
+  "author": "Sushi Bisso",
+  "isbn": "123456789",
+  "genre": "Fantasy",
+  "totalPages": 250,
+  "description": "A magical tale of sushi and stars.",
+  "publishedDate": "2024-06-01"
+}
