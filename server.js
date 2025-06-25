@@ -1,11 +1,15 @@
 const express = require("express");
+const { connect } = require("./config/db");
 const app = express();
 const PORT = 3000;
 
 app.get("/", (req, res) => {
   res.send("Hello, world!");
 });
+// app.use("/", require("./routes"));
 
-app.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}`);
+connect().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server is running at http://localhost:${PORT}`);
+  });
 });
