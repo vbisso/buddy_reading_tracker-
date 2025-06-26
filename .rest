@@ -1,12 +1,15 @@
-POST http://localhost:3000/books
+GET http://localhost:3000/books/
+
+###
+PUT http://localhost:3000/books/685b73cdb30420d04d2c9c9b
 Content-Type: application/json
 
-{
-  "title": "Book Test 1",
-  "author": "Sushi Bisso",
-  "isbn": "123456789",
-  "genre": "Fantasy",
-  "totalPages": 250,
-  "description": "A magical tale of sushi and stars.",
-  "publishedDate": "2024-06-01"
-}
+ {
+   "title": "Harry Potter",
+   "author": "JK Rowling",
+   "isbn": "978-0-7475-3269-9",
+   "genre": "Fantasy",
+   "totalPages": 223,
+   "description": "Harry Potter and the Philosopher's Stone is a fantasy novel written by British author J. K. Rowling.",
+   "publishedDate": "1997-06-26"
+ }

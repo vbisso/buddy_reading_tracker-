@@ -8,6 +8,17 @@ const getAllBooks = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+//get book by id
+const getBookById = async (req, res) => {
+  try {
+    const book = await Book.findById(req.params.id);
+    res.status(200).json(book);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+//POST a new book
 const addBook = async (req, res) => {
   try {
     const book = await Book.create(req.body);
@@ -16,7 +27,31 @@ const addBook = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+//update a book
+const updateBook = async (req, res) => {
+  try {
+    // console.log(req.body);
+    const book = await Book.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    res.status(200).json(book);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+//delete a book
+const deleteBook = async (req, res) => {
+  try {
+    const book = await Book.findByIdAndDelete(req.params.id);
+    res.status(200).json(book);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 module.exports = {
   getAllBooks,
   addBook,
+  getBookById,
+  updateBook,
+  deleteBook,
 };
