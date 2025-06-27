@@ -21,24 +21,65 @@ const getBookById = async (req, res) => {
 //POST a new book
 const addBook = async (req, res) => {
   try {
-    const book = await Book.create(req.body);
-    res.status(200).json(book);
+    const {
+      title,
+      author,
+      isbn,
+      genre,
+      totalPages,
+      description,
+      publishedDate,
+    } = req.body;
+
+    const book = await Book.create({
+      title,
+      author,
+      isbn,
+      genre,
+      totalPages,
+      description,
+      publishedDate,
+    });
+
+    res.status(201).json(book);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
+
 //update a book
 const updateBook = async (req, res) => {
   try {
-    // console.log(req.body);
-    const book = await Book.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
-    res.status(200).json(book);
+    const {
+      title,
+      author,
+      isbn,
+      genre,
+      totalPages,
+      description,
+      publishedDate,
+    } = req.body;
+
+    const updatedBook = await Book.findByIdAndUpdate(
+      req.params.id,
+      {
+        title,
+        author,
+        isbn,
+        genre,
+        totalPages,
+        description,
+        publishedDate,
+      },
+      { new: true, runValidators: true }
+    );
+
+    res.status(200).json(updatedBook);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
+
 //delete a book
 const deleteBook = async (req, res) => {
   try {
