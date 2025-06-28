@@ -5,10 +5,10 @@
     "description": "API for managing books, users, progress, and notes",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "cse341-tpkb.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/": {
