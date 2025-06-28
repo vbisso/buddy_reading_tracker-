@@ -2,7 +2,7 @@ const swaggerAutogen = require("swagger-autogen")();
 
 //Dynamically choose host
 const isRender = process.env.RENDER === "true";
-const host = isRender ? "cse341-tpkb.onrender.com" : "localhost:3000";
+const host = isRender ? "buddy-reading-tracker.onrender.com" : "localhost:3000";
 
 const doc = {
   info: {
@@ -14,6 +14,5 @@ const doc = {
 };
 
 const outputFile = "./swagger/swagger-output.json";
-const endpointsFiles = ["./server.js", "./routes/books.js"];
-
+const endpointsFiles = ["./server.js", "./routes/index.js"];
 swaggerAutogen(outputFile, endpointsFiles, doc);
