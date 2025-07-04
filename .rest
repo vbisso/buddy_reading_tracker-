@@ -13,3 +13,17 @@ Content-Type: application/json
    "description": "Harry Potter and the Philosopher's Stone is a fantasy novel written by British author J. K. Rowling.",
    "publishedDate": "1997-06-26"
  }
+
+###
+POST http://localhost:3000/highlightsNotes
+Content-Type: application/json
+
+{
+  "userId": "valeriabisso",
+  "bookId":"685b73cdb30420d04d2c9c9b",
+  "pageNumber":150,
+  "noteType":"Note",
+  "content":"Loved this part!!"
+}
+###
+GET http://localhost:3000/highlightsNotes
