@@ -31,9 +31,9 @@ app.use(passport.session());
 //   console.log("Using fake auth for testing.");
 // }
 
-app.get("/", (req, res) => {
-  res.send("Hello, world!");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello, world!");
+// });
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use("/", require("./routes"));
