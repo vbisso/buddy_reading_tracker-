@@ -1,0 +1,10 @@
+GOOGLE_CLIENT_ID=insert-client-id.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=insert-client-secret
+JWT_SECRET=secure-jwt-secret
+
+GOOGLE_CLIENT_ID_DUM=dummy-client-id
+GOOGLE_CLIENT_SECRET_DUM=dummy-client-secret
+SESSION_SECRET=temporary-session-secret
+USE_FAKE_AUTH=true
+
+RENDER=true
