@@ -1,11 +1,20 @@
 const express = require("express");
 const router = express.Router();
 const highlightsNotesController = require("../controllers/highlightsNotes");
+const authenticate = require("../middleware/authenticate");
 
-router.get("/", highlightsNotesController.getAllHighlightsNotes);
-router.get("/:id", highlightsNotesController.getHighlightNoteById);
-router.post("/", highlightsNotesController.addHighlightNote);
-router.put("/:id", highlightsNotesController.updateHighlightNote);
-router.delete("/:id", highlightsNotesController.deleteHighlightNote);
+router.get("/", authenticate, highlightsNotesController.getAllHighlightsNotes);
+router.get(
+  "/:id",
+  authenticate,
+  highlightsNotesController.getHighlightNoteById
+);
+router.post("/", authenticate, highlightsNotesController.addHighlightNote);
+router.put("/:id", authenticate, highlightsNotesController.updateHighlightNote);
+router.delete(
+  "/:id",
+  authenticate,
+  highlightsNotesController.deleteHighlightNote
+);
 
 module.exports = router;
