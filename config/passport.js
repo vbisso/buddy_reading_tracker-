@@ -2,6 +2,7 @@ const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 // Only initialize Google OAuth strategy if not using fake auth
+
 if (process.env.USE_FAKE_AUTH !== "true") {
   passport.use(
     new GoogleStrategy(

@@ -1,6 +1,6 @@
 const express = require("express");
 const passport = require("passport");
-require("../auth/google");
+require("../middleware/authGoogle");
 const router = express.Router();
 
 router.get(
@@ -16,5 +16,10 @@ router.get(
     res.json({ token: req.user.token, user: req.user.user });
   }
 );
+
+router.get("/logout", (req, res) => {
+  req.logout();
+  res.redirect("/");
+});
 
 module.exports = router;

@@ -5,7 +5,7 @@ const readingProgressSchema = new mongoose.Schema({
   userId: { type: String, required: true }, //replace later with mongoose.Schema.Types.ObjectId once we have req.user.id for authentication
   bookId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Books",
+    ref: "Book",
     required: true,
   },
   // bookId: { type: String, required: true },

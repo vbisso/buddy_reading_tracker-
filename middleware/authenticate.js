@@ -3,11 +3,11 @@ const jwt = require("jsonwebtoken");
 const authenticate = (req, res, next) => {
   const authHeader = req.headers.authorization;
 
-  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+  if (!authHeader) {
     return res.status(401).json({ message: "Missing or incorrect token" });
   }
 
-  const token = authHeader.split(" ")[1];
+  const token = authHeader;
 
   try {
     const decoded = jwt.verify(

@@ -4,10 +4,13 @@ const highlightsNotesRouter = require("./highlightsNotes");
 const readingProgressRouter = require("./readingProgress");
 const userRouter = require("./users");
 const swaggerRouter = require("./swagger");
+const authRouter = require("./auth");
 
 routes.get("/", (req, res) => {
   res.send("Welcome to the Buddy Reading Tracker API!");
 });
+
+routes.use("/auth", authRouter);
 
 routes.use("/api-docs", swaggerRouter);
 
