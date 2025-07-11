@@ -1,27 +1,27 @@
 const highlightsNotes = require("../models/highlightsNotes");
 //get all highlights notes
-const getAllHighlightsNotes = async (req, res) => {
+const getAllHighlightsNotes = async (req, res, next) => {
   try {
     const notes = await highlightsNotes.find().populate("bookId");
     res.status(200).json(notes);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    next(error);
   }
 };
 
 //get highlight note by id
-const getHighlightNoteById = async (req, res) => {
+const getHighlightNoteById = async (req, res, next) => {
   try {
     const highlightNote = await highlightsNotes
       .findById(req.params.id)
       .populate("bookId");
     res.status(200).json(highlightNote);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    next(error);
   }
 };
 //POST new book
-const addHighlightNote = async (req, res) => {
+const addHighlightNote = async (req, res, next) => {
   try {
     const {
       userId, //replace later with req.user.id after authentication
@@ -39,11 +39,11 @@ const addHighlightNote = async (req, res) => {
     });
     res.status(201).json(highlightNote);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    next(error);
   }
 };
 //PUT
-const updateHighlightNote = async (req, res) => {
+const updateHighlightNote = async (req, res, next) => {
   try {
     const {
       userId, //replace later with req.user.id after authentication
@@ -65,20 +65,21 @@ const updateHighlightNote = async (req, res) => {
     );
     res.status(200).json(updatedHighlightNote);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    next(error);
   }
 };
 //DELETE
-const deleteHighlightNote = async (req, res) => {
+const deleteHighlightNote = async (req, res, next) => {
   try {
     const highlightNote = await highlightsNotes.findByIdAndDelete(
       req.params.id
     );
     res.status(200).json(highlightNote);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    next(error);
   }
 };
+
 module.exports = {
   getAllHighlightsNotes,
   getHighlightNoteById,
