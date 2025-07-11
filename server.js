@@ -5,6 +5,7 @@ const swaggerFile = require("./swagger/swagger-output.json");
 const cors = require("cors");
 const passport = require("passport");
 const cookieSession = require("cookie-session");
+const errorHandler = require("./middleware/errorHandler");
 
 require("./config/passport");
 
@@ -37,6 +38,7 @@ app.use(passport.session());
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use("/", require("./routes"));
+app.use(errorHandler);
 
 connect().then(() => {
   app.listen(PORT, () => {
