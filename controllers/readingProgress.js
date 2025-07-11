@@ -1,24 +1,24 @@
 const readingProgress = require("../models/readingProgress");
-const getAllReadingProgress = async (req, res) => {
+const getAllReadingProgress = async (req, res, next) => {
   try {
     const progress = await readingProgress.find().populate("bookId");
     res.status(200).json(progress);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    next(error);
   }
 };
-const getReadingProgressById = async (req, res) => {
+const getReadingProgressById = async (req, res, next) => {
   try {
     const progress = await readingProgress
       .findById(req.params.id)
       .populate("bookId");
     res.status(200).json(progress);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    next(error);
   }
 };
 
-const addReadingProgress = async (req, res) => {
+const addReadingProgress = async (req, res, next) => {
   try {
     const {
       userId, //replace later with req.user.id after authentication
@@ -34,10 +34,10 @@ const addReadingProgress = async (req, res) => {
     });
     res.status(201).json(progress);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    next(error);
   }
 };
-const updateReadingProgress = async (req, res) => {
+const updateReadingProgress = async (req, res, next) => {
   try {
     const {
       userId, //replace later with req.user.id after authentication
@@ -57,16 +57,16 @@ const updateReadingProgress = async (req, res) => {
     );
     res.status(200).json(progress);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    next(error);
   }
 };
 
-const deleteReadingProgress = async (req, res) => {
+const deleteReadingProgress = async (req, res, next) => {
   try {
     const progress = await readingProgress.findByIdAndDelete(req.params.id);
     res.status(200).json(progress);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    next(error);
   }
 };
 
