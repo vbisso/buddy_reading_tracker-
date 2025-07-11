@@ -1,25 +1,25 @@
 const Book = require("../models/books");
 //GET all books
-const getAllBooks = async (req, res) => {
+const getAllBooks = async (req, res, next) => {
   try {
     const books = await Book.find();
     res.status(200).json(books);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    next(error);
   }
 };
 //get book by id
-const getBookById = async (req, res) => {
+const getBookById = async (req, res, next) => {
   try {
     const book = await Book.findById(req.params.id);
     res.status(200).json(book);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    next(error);
   }
 };
 
 //POST a new book
-const addBook = async (req, res) => {
+const addBook = async (req, res, next) => {
   try {
     const {
       title,
@@ -43,12 +43,12 @@ const addBook = async (req, res) => {
 
     res.status(201).json(book);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    next(error);
   }
 };
 
 //update a book
-const updateBook = async (req, res) => {
+const updateBook = async (req, res, next) => {
   try {
     const {
       title,
@@ -76,19 +76,20 @@ const updateBook = async (req, res) => {
 
     res.status(200).json(updatedBook);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    next(error);
   }
 };
 
 //delete a book
-const deleteBook = async (req, res) => {
+const deleteBook = async (req, res, next) => {
   try {
     const book = await Book.findByIdAndDelete(req.params.id);
     res.status(200).json(book);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    next(error);
   }
 };
+
 module.exports = {
   getAllBooks,
   addBook,
