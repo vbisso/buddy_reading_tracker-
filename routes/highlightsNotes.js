@@ -7,7 +7,7 @@ const highlightsNotesController = require("../controllers/highlightsNotes");
 
 const validateHighlightNote = [
   body("bookId").notEmpty().withMessage("bookId is required"),
-  body("note").notEmpty().withMessage("Note cannot be empty"),
+  body("content").notEmpty().withMessage("Note cannot be empty"),
   validate,
 ];
 
