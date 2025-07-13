@@ -35,13 +35,13 @@ beforeEach(async () => {
     publishedDate: "2022-01-01",
   });
   testBookID = book._id;
-  await ReadingProgress.create({
+
+  const progress = await ReadingProgress.create({
     userId: "test",
     bookId: testBookID,
     currentPage: 1,
     percentageComplete: 50,
   });
-  const progress = await ReadingProgress.findOne({});
   testReadingProgressId = progress._id;
 });
 
