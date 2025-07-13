@@ -59,7 +59,7 @@ describe("Highlights Notes Routes", () => {
   it("should create a new highlight note on /highlightsNotes", async () => {
     const res = await request(app).post("/highlightsNotes").send({
       userId: "test 1",
-      bookId: testBookId,
+      bookId: testBookId.toString(),
       pageNumber: 20,
       noteType: "test 1",
       content: "test 1",
